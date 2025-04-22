@@ -1,7 +1,13 @@
-import "./App.css";
+import "./index.css";
+import ContactUs from "./components/ContactUs";
 
 function App() {
-  return <><h1 className='h-dvh text-4xl flex justify-center items-center'>Contact Us form</h1></>;
+  return (
+    <main className="h-screen">
+      <ContactUs />
+    </main>
+  );
 }
 
 export default App;
+ 
