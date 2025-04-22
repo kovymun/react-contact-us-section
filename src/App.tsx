@@ -3,7 +3,7 @@ import ContactUs from "./components/ContactUs";
 
 function App() {
   return (
-    <main className="h-screen p-6">
+    <main>
       <ContactUs />
     </main>
   );
