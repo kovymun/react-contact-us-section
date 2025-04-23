@@ -1,6 +1,15 @@
 import { Clock, MapPin, Phone, MessageCircleMore } from "lucide-react";
+import { MediCentreDB } from "../types/contact"; // 👈 import type
+import { v4 as uuidv4 } from "uuid";
 
-function ContactUs() {
+// Step 1: Define props interface
+interface ContactUsProps {
+  data: MediCentreDB;
+}
+
+function ContactUs({ data }: ContactUsProps) {
+  // Destructuring data
+  const { hours } = data;
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center font-sans">
       {/* Contact Us Section Intro */}
@@ -23,29 +32,31 @@ function ContactUs() {
       {/* Content-Grid */}
       <div className="w-full grid grid-cols-3 border-b-4">
         {/* Opening Hours */}
-        <div id="hours" className="bg-[#81E7AF] text-[#2e2e2e] p-10 border-r-4">
-          <h2 className="text-3xl font-bold flex items-center gap-2">
-            <span>
-              <Clock size={35} />
-            </span>
-            Our Hours
-          </h2>
-          <p className="mt-4 text-md">
-            <strong>Mon - Thu:</strong> 7:40 AM – 5:00 PM
-          </p>
-          <p className="mt-3 text-md">
-            <strong>Friday:</strong> 7:30 AM – 1:00 PM
-          </p>
-          <p className="mt-3 text-md">
-            <strong>Saturday:</strong> 8:00 AM – 12:00 PM
-          </p>
-          <button
-            onClick={() => alert("Request Appointment")}
-            className="mt-4 bg-[#2c786c] text-white px-4 py-2 rounded-lg font-semibold cursor-pointer"
+        {hours.map((timeInfo) => (
+          <div
+            key={uuidv4()}
+            id={timeInfo.id}
+            className="bg-[#81E7AF] text-[#2e2e2e] p-10 border-r-4"
           >
-            Request an Appointment
-          </button>
-        </div>
+            <h2 className="text-3xl font-bold flex items-center gap-2">
+              <Clock size={35} />
+              {timeInfo.title}
+            </h2>
+            <div className="mt-4 text-md">
+              {timeInfo.hour_content.map((line, index) => (
+                <p className="mt-3 text-md" key={index}>
+                  {line}
+                </p>
+              ))}
+            </div>
+            <button
+              onClick={() => alert("Request Appointment")}
+              className="mt-4 bg-[#2c786c] text-white px-4 py-2 rounded-lg font-semibold cursor-pointer"
+            >
+              Request an Appointment
+            </button>
+          </div>
+        ))}
 
         {/* Location */}
         <div
