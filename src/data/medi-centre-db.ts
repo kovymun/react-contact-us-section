@@ -25,4 +25,17 @@ export const mediCentreDB: MediCentreDB = {
       ],
     },
   ],
+  contact: [
+    {
+      id: "contact",
+      title: "Contact",
+      contact_content: [
+        {
+          phone: "(021) 123 4568",
+          whatsapp: "+27 82 123 4568",
+          email: "info@riversidemed.co.za",
+        },
+      ],
+    },
+  ],
 };

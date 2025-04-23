@@ -13,7 +13,14 @@ interface MediCentreLocation {
   loc_content: MediCentreLocationDetails[];
 }
 
+interface MediCentreContact {
+  id: string;
+  title: string;
+  contact_content: MediCentreContactDetails[];
+}
+
 export interface MediCentreDB {
   hours: MediCentreHours[];
   location: MediCentreLocation[];
+  contact: MediCentreContact[];
 }
