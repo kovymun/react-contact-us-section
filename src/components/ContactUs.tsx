@@ -9,7 +9,7 @@ interface ContactUsProps {
 
 function ContactUs({ data }: ContactUsProps) {
   // Destructuring data
-  const { hours } = data;
+  const { hours, location } = data;
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center font-sans">
       {/* Contact Us Section Intro */}
@@ -43,15 +43,15 @@ function ContactUs({ data }: ContactUsProps) {
               {timeInfo.title}
             </h2>
             <div className="mt-4 text-md">
-              {timeInfo.hour_content.map((line, index) => (
-                <p className="mt-3 text-md" key={index}>
-                  {line}
+              {timeInfo.hour_content.map((time) => (
+                <p className="mt-3 text-md" key={uuidv4()}>
+                  {time}
                 </p>
               ))}
             </div>
             <button
               onClick={() => alert("Request Appointment")}
-              className="mt-4 bg-[#2c786c] text-white px-4 py-2 rounded-lg font-semibold cursor-pointer"
+              className="mt-4 bg-[#2c786c] text-white px-4 py-2 rounded-lg font-semibold cursor-pointer uppercase"
             >
               Request an Appointment
             </button>
@@ -59,20 +59,27 @@ function ContactUs({ data }: ContactUsProps) {
         ))}
 
         {/* Location */}
-        <div
-          id="location"
-          className="bg-[#81E7AF] text-[#2e2e2e] p-10 border-r-4"
-        >
-          <h2 className="text-3xl font-bold flex items-center gap-2">
-            <span>
-              <MapPin size={35} />
-            </span>
-            Location
-          </h2>
-          <p className="mt-4 text-md">Riverside Medical Centre</p>
-          <p className="mt-3 text-md">102 Willowbend Road</p>
-          <p className="mt-3 text-md">Westwood, Cape Town 7700</p>
-        </div>
+        {location.map((loc) => (
+          <div
+            key={uuidv4()}
+            id={loc.id}
+            className="bg-[#81E7AF] text-[#2e2e2e] p-10 border-r-4"
+          >
+            <h2 className="text-3xl font-bold flex items-center gap-2">
+              <span>
+                <MapPin size={35} />
+              </span>
+              {loc.title}
+            </h2>
+            {loc.loc_content.map((address) => (
+              <div key={uuidv4()} className="mt-4 text-md">
+                <p className="mt-4">{address.centre_name}</p>
+                <p className="mt-4">{address.centre_address}</p>
+                <p className="mt-4">{address.centre_city}</p>
+              </div>
+            ))}
+          </div>
+        ))}
 
         {/* Contact Details */}
 

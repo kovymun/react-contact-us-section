@@ -12,4 +12,17 @@ export const mediCentreDB: MediCentreDB = {
       ],
     },
   ],
+  location: [
+    {
+      id: "location",
+      title: "Location",
+      loc_content: [
+        {
+          centre_name: "Riverside Medical Centre",
+          centre_address: "102 Willowbend Road",
+          centre_city: "Westwood, Cape Town 7700",
+        },
+      ],
+    },
+  ],
 };
