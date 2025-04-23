@@ -32,7 +32,7 @@ function ContactUs({ data }: ContactUsProps) {
       {/* Content-Grid */}
       <div className="w-full grid grid-cols-3 border-b-4">
         {/* Opening Hours */}
-        {hours.map(({id, title, hour_content}) => (
+        {hours.map(({ id, title, hour_content }) => (
           <div
             key={uuidv4()}
             id={id}
@@ -50,7 +50,12 @@ function ContactUs({ data }: ContactUsProps) {
               ))}
             </div>
             <button
-              onClick={() => alert("Request Appointment")}
+              onClick={() => {
+                const dialog = document.getElementById(
+                  "medi-contact-modal"
+                ) as HTMLDialogElement;
+                dialog?.showModal();
+              }}
               className="mt-4 bg-[#2c786c] text-white px-4 py-2 rounded-lg font-semibold cursor-pointer uppercase"
             >
               Request an Appointment
@@ -59,7 +64,7 @@ function ContactUs({ data }: ContactUsProps) {
         ))}
 
         {/* Location */}
-        {location.map(({id, title, loc_content}) => (
+        {location.map(({ id, title, loc_content }) => (
           <div
             key={uuidv4()}
             id={id}
@@ -71,7 +76,7 @@ function ContactUs({ data }: ContactUsProps) {
               </span>
               {title}
             </h2>
-            {loc_content.map(({centre_name, centre_address, centre_city}) => (
+            {loc_content.map(({ centre_name, centre_address, centre_city }) => (
               <div key={uuidv4()} className="mt-4 text-md">
                 <p className="mt-4">{centre_name}</p>
                 <p className="mt-4">{centre_address}</p>
@@ -94,7 +99,7 @@ function ContactUs({ data }: ContactUsProps) {
               </span>
               {title}
             </h2>
-            {contact_content.map(({phone, whatsapp, email}) => (
+            {contact_content.map(({ phone, whatsapp, email }) => (
               <div key={uuidv4()}>
                 <p className="mt-4 text-md">
                   <strong>Phone:</strong> {phone}
@@ -110,6 +115,76 @@ function ContactUs({ data }: ContactUsProps) {
           </div>
         ))}
       </div>
+
+      {/* Appointment Request Modal */}
+      <dialog
+        id="medi-contact-modal"
+        className="modal modal-bottom sm:modal-middle"
+      >
+        <div className="modal-box bg-white text-[#2e2e2e] max-w-content">
+          <h3 className="font-bold text-lg text-center border-b-4 p-2">
+            Appointment Request
+          </h3>
+          <p className="text-sm text-gray-600 mt-2">
+            Please fill in your details and our team will get back to you within
+            24 hours to confirm your appointment.
+          </p>
+          <p className="text-sm text-gray-500 mt-2 italic">
+            We'll reach out via phone or email to finalize your booking.
+          </p>
+          <p className="text-xs text-red-500 mt-2">
+            *Note: Submitting this form does not guarantee an appointment slot.
+          </p>
+
+          <div className="modal-action">
+            <div className="w-full">
+              {" "}
+              <form method="dialog" className="grid grid-cols-4 gap-2">
+                {/* Patient Name */}
+                <div className="col-span-4">
+                  <label className="block mb-1 font-medium text-sm">Patient Name</label>
+                  <div className="flex gap-2 bg-white">
+                    <input
+                      type="text"
+                      placeholder="First"
+                      className="block w-full px-4 py-2 text-gray-900 bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm focus:outline-none leading-relaxed"
+                    />
+                    <input
+                      type="text"
+                      placeholder="Last"
+                      className="block w-full px-4 py-2 text-gray-900 bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm focus:outline-none leading-relaxed"
+                    />
+                  </div>
+                </div>
+
+                {/* Patient Contact Info */}
+                <div className="col-span-2 mt-2">
+                  <label className="block mb-1 font-medium text-sm">
+                    Contact Phone
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Phone"
+                    className="block w-full px-4 py-2 text-gray-900 bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm focus:outline-none leading-relaxed"
+                  />
+                </div>
+                <div className="col-span-2 mt-2">
+                  <label className="block mb-1 font-medium text-sm">
+                    Contact Email
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    className="block w-full px-4 py-2 text-gray-900 bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm focus:outline-none leading-relaxed"
+                  />
+                </div>
+
+                {/* <button className="">Close</button> */}
+              </form>
+            </div>
+          </div>
+        </div>
+      </dialog>
     </div>
   );
 }
