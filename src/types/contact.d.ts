@@ -19,8 +19,15 @@ interface MediCentreContact {
   contact_content: MediCentreContactDetails[];
 }
 
+interface MediCentrePractitioners {
+  practice_id: string;
+  doctor: string;
+  medicalField: string;
+}
+
 export interface MediCentreDB {
   hours: MediCentreHours[];
   location: MediCentreLocation[];
   contact: MediCentreContact[];
+  practitioners: MediCentrePractitioners[];
 }
