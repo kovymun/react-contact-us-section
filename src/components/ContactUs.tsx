@@ -46,6 +46,14 @@ function ContactUs({ data }: ContactUsProps) {
     reset();
   };
 
+  // User Action - Close the Request Appointment Modal
+  const handleModalClose = async () => {
+    reset();
+    (
+      document.getElementById("medi-contact-modal") as HTMLDialogElement
+    )?.close();
+  };
+
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center font-sans">
       {/* Contact Us Section Intro */}
@@ -187,6 +195,7 @@ function ContactUs({ data }: ContactUsProps) {
                 <button
                   type="button"
                   className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                  onClick={handleModalClose}
                 >
                   ✕
                 </button>
