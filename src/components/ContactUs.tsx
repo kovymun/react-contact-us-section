@@ -20,7 +20,7 @@ interface AppointmentFormInputs {
 
 function ContactUs({ data }: ContactUsProps) {
   // Destructuring data
-  const { hours, location, contact } = data;
+  const { hours, location, contact, practitioners } = data;
 
   // useForm hook
   const {
@@ -318,6 +318,7 @@ function ContactUs({ data }: ContactUsProps) {
                   <label className="block mb-1 font-medium text-sm">
                     Who do you need to see?
                   </label>
+
                   <select
                     className="px-4 py-2 w-full border border-gray-300 text-sm mt-1"
                     defaultValue="Select a practitioner"
@@ -332,21 +333,15 @@ function ContactUs({ data }: ContactUsProps) {
                       Select a practitioner
                     </option>
 
-                    <option className="text-[#2e2e2e]">
-                      General Practitioner- Dr. Ayesha Khan
-                    </option>
-                    <option className="text-[#2e2e2e]">
-                      Pediatrician - Dr. Sipho Dlamini
-                    </option>
-                    <option className="text-[#2e2e2e]">
-                      Dentist - Dr. Thandi Mokoena
-                    </option>
-                    <option className="text-[#2e2e2e]">
-                      Physiotherapist - Dr. Pieter van der Merwe
-                    </option>
-                    <option className="text-[#2e2e2e]">
-                      Biokineticist - Dr. Candice Naidoo
-                    </option>
+                    {practitioners.map(({ doctor, medicalField }) => (
+                      <option
+                        key={uuidv4()}
+                        className="text-[#2e2e2e]"
+                        value={`${doctor} - ${medicalField}`}
+                      >
+                        {medicalField} - {doctor}
+                      </option>
+                    ))}
                   </select>
                   {errors.practitioner && (
                     <p className="text-xs text-red-500 mt-2">

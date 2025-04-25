@@ -38,4 +38,31 @@ export const mediCentreDB: MediCentreDB = {
       ],
     },
   ],
+  practitioners: [
+    {
+      practice_id: "GP-AK-001",
+      doctor: "Dr. Ayesha Khan",
+      medicalField: "General Practitioner",
+    },
+    {
+      practice_id: "PED-SD-002",
+      doctor: "Dr. Sipho Dlamini",
+      medicalField: "Pediatrician",
+    },
+    {
+      practice_id: "DEN-TM-003",
+      doctor: "Dr. Thandi Mokoena",
+      medicalField: "Dentist",
+    },
+    {
+      practice_id: "PHY-PVDM-004",
+      doctor: "Dr. Pieter van der Merwe",
+      medicalField: "Physiotherapist",
+    },
+    {
+      practice_id: "BIO-CN-005",
+      doctor: "Dr. Candice Naidoo",
+      medicalField: "Biokineticist",
+    },
+  ],
 };
