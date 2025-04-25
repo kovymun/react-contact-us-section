@@ -169,9 +169,9 @@ function ContactUs({ data }: ContactUsProps) {
           <p className="text-sm text-gray-500 mt-2 italic">
             We'll reach out via phone or email to finalize your booking.
           </p>
-          <p className="text-xs text-red-500 mt-2">
+          {/* <p className="text-xs text-red-500 mt-2">
             *Note: Submitting this form does not guarantee an appointment slot.
-          </p>
+          </p> */}
 
           <div className="modal-action">
             <div className="w-full">
@@ -203,7 +203,7 @@ function ContactUs({ data }: ContactUsProps) {
                         {...register("firstName", {
                           required: {
                             value: true,
-                            message: "Patient first name is required",
+                            message: "Please enter the patient's first name",
                           },
                         })}
                       />
@@ -223,7 +223,7 @@ function ContactUs({ data }: ContactUsProps) {
                         {...register("lastName", {
                           required: {
                             value: true,
-                            message: "Patient last name is required",
+                            message: "Please enter the patient's last name",
                           },
                         })}
                       />
@@ -252,15 +252,15 @@ function ContactUs({ data }: ContactUsProps) {
                     {...register("phone", {
                       required: {
                         value: true,
-                        message: "Mobile number is required",
+                        message: "Please provide a mobile contact number",
                       },
                       pattern: {
                         value: mobileRegexPattern,
-                        message: "Please enter a valid mobile number",
+                        message: "Enter a valid mobile number (digits only)",
                       },
                       minLength: {
                         value: 10,
-                        message: "Mobile number should be at least 10 digits",
+                        message: "Mobile number must be at least 10 digits",
                       },
                     })}
                   />
@@ -284,11 +284,11 @@ function ContactUs({ data }: ContactUsProps) {
                     {...register("email", {
                       required: {
                         value: true,
-                        message: "Email address is required",
+                        message: "Please enter an email address",
                       },
                       pattern: {
                         value: emailRegexPattern,
-                        message: "Please enter a valid email address",
+                        message: "Please provide a valid email address",
                       },
                     })}
                   />
@@ -310,7 +310,7 @@ function ContactUs({ data }: ContactUsProps) {
                     {...register("practitioner", {
                       required: {
                         value: true,
-                        message: "Please select your Practitioner",
+                        message: "Select a healthcare provider from the list",
                       },
                     })}
                   >
@@ -352,7 +352,7 @@ function ContactUs({ data }: ContactUsProps) {
                     {...register("preferredTime", {
                       required: {
                         value: true,
-                        message: "Preferred Appointment time is required",
+                        message: "Please choose a preferred date and time",
                       },
                     })}
                   />
@@ -374,7 +374,7 @@ function ContactUs({ data }: ContactUsProps) {
                     {...register("reason", {
                       required: {
                         value: true,
-                        message: "Please state the reason for Visit",
+                        message: "Let us know the reason for your visit",
                       },
                     })}
                   ></textarea>
