@@ -30,10 +30,10 @@ function ContactUs({ data }: ContactUsProps) {
     formState: { errors, isSubmitting },
   } = useForm<AppointmentFormInputs>();
 
+  //Regex pattern validations
   const emailRegexPattern = new RegExp(
     /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/
   );
-
   const mobileRegexPattern = new RegExp(/^[0-9]{10}$/);
 
   const reqAppointment = () => {
@@ -190,34 +190,44 @@ function ContactUs({ data }: ContactUsProps) {
                     Patient Name
                   </label>
                   <div className="flex gap-2 bg-white">
-                    <input
-                      type="text"
-                      placeholder="First"
-                      className="block w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm focus:outline-none leading-relaxed"
-                      {...register("firstName", {
-                        required: {
-                          value: true,
-                          message: "Patient first name is required",
-                        },
-                      })}
-                    />
-                    {errors.firstName && (
-                      <p className="grid">{errors.firstName.message}</p>
-                    )}
-                    <input
-                      type="text"
-                      placeholder="Last"
-                      className="block w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm focus:outline-none leading-relaxed"
-                      {...register("lastName", {
-                        required: {
-                          value: true,
-                          message: "Patient last name is required",
-                        },
-                      })}
-                    />
-                    {errors.lastName && (
-                      <p className="grid">{errors.lastName.message}</p>
-                    )}
+                    <div>
+                      <input
+                        type="text"
+                        placeholder="First"
+                        className="block w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm focus:outline-none leading-relaxed"
+                        {...register("firstName", {
+                          required: {
+                            value: true,
+                            message: "Patient first name is required",
+                          },
+                        })}
+                      />
+                      {errors.firstName && (
+                        <p className="text-xs text-red-500 mt-2">
+                          {errors.firstName.message}
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      {" "}
+                      <input
+                        type="text"
+                        placeholder="Last"
+                        className="block w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm focus:outline-none leading-relaxed"
+                        {...register("lastName", {
+                          required: {
+                            value: true,
+                            message: "Patient last name is required",
+                          },
+                        })}
+                      />
+                      {errors.lastName && (
+                        <p className="text-xs text-red-500 mt-2">
+                          {errors.lastName.message}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </div>
 
@@ -249,7 +259,11 @@ function ContactUs({ data }: ContactUsProps) {
                       },
                     })}
                   />
-                  {errors.phone && <p className="">{errors.phone.message}</p>}
+                  {errors.phone && (
+                    <p className="text-xs text-red-500 mt-2">
+                      {errors.phone.message}
+                    </p>
+                  )}
                 </div>
                 <div className="col-span-2 mt-2">
                   <label
@@ -273,7 +287,11 @@ function ContactUs({ data }: ContactUsProps) {
                       },
                     })}
                   />
-                  {errors.email && <p className="">{errors.email.message}</p>}
+                  {errors.email && (
+                    <p className="text-xs text-red-500 mt-2">
+                      {errors.email.message}
+                    </p>
+                  )}
                 </div>
 
                 {/* Who to See */}
@@ -281,7 +299,16 @@ function ContactUs({ data }: ContactUsProps) {
                   <label className="block mb-1 font-medium text-sm">
                     Who do you need to see?
                   </label>
-                  <select className="px-4 py-2 w-full border border-gray-300 text-sm mt-1" defaultValue="Select a practitioner">
+                  <select
+                    className="px-4 py-2 w-full border border-gray-300 text-sm mt-1"
+                    defaultValue="Select a practitioner"
+                    {...register("practitioner", {
+                      required: {
+                        value: true,
+                        message: "Please select your Practitioner",
+                      },
+                    })}
+                  >
                     <option className="text-gray-400 text-sm" disabled>
                       Select a practitioner
                     </option>
@@ -302,6 +329,11 @@ function ContactUs({ data }: ContactUsProps) {
                       Biokineticist - Dr. Candice Naidoo
                     </option>
                   </select>
+                  {errors.practitioner && (
+                    <p className="text-xs text-red-500 mt-2">
+                      {errors.practitioner.message}
+                    </p>
+                  )}
                 </div>
 
                 {/* Preferred Time: Date + Time Picker */}
@@ -312,7 +344,18 @@ function ContactUs({ data }: ContactUsProps) {
                   <input
                     type="datetime-local"
                     className="px-4 py-2 border border-gray-300 w-full text-sm"
+                    {...register("preferredTime", {
+                      required: {
+                        value: true,
+                        message: "Preferred Appointment time is required",
+                      },
+                    })}
                   />
+                  {errors.preferredTime && (
+                    <p className="text-xs text-red-500 mt-2">
+                      {errors.preferredTime.message}
+                    </p>
+                  )}
                 </div>
 
                 {/* Reason for Visit */}
@@ -323,7 +366,18 @@ function ContactUs({ data }: ContactUsProps) {
                   <textarea
                     className="border border-gray-300 w-full"
                     rows={3}
+                    {...register("reason", {
+                      required: {
+                        value: true,
+                        message: "Please state the reason for Visit",
+                      },
+                    })}
                   ></textarea>
+                  {errors.reason && (
+                    <p className="text-xs text-red-500 mt-2">
+                      {errors.reason.message}
+                    </p>
+                  )}
                 </div>
 
                 <button
