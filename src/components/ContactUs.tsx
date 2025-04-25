@@ -51,14 +51,14 @@ function ContactUs({ data }: ContactUsProps) {
       {/* Contact Us Section Intro */}
       <div
         id="contact-intro"
-        className="w-full text-center bg-[#81E7AF] text-[#2e2e2e] p-8 px-20 border-y-4"
+        className="w-full bg-[#81E7AF] text-[#2e2e2e] p-8 px-20 border-4 border-[#2e2e2e]"
       >
-        <h1 className="flex items-center justify-center gap-2 text-3xl font-bold">
+        <h1 className="flex items-center justify-center gap-2 text-2xl font-bold uppercase tracking-wide">
           <MessageCircleMore size={35} />
           Contact Us
         </h1>
 
-        <p className="mt-4 text-md">
+        <p className="mt-4">
           We're here to help you feel your best. Whether you're booking an
           appointment, looking for directions, or have a question for our team,
           Riverside Medical Centre is just a call or click away.
@@ -66,21 +66,23 @@ function ContactUs({ data }: ContactUsProps) {
       </div>
 
       {/* Content-Grid */}
-      <div className="w-full grid grid-cols-3 border-b-4">
+      <div className="w-full grid grid-cols-3 border-b-4 border-[#2e2e2e]">
         {/* Opening Hours */}
         {hours.map(({ id, title, hour_content }) => (
           <div
             key={uuidv4()}
             id={id}
-            className="bg-[#81E7AF] text-[#2e2e2e] p-10 border-r-4"
+            className="bg-[#81E7AF] text-[#2e2e2e] p-10 border-r-4 border-[#2e2e2e]"
           >
-            <h2 className="text-3xl font-bold flex items-center gap-2">
-              <Clock size={35} />
-              {title}
+            <h2 className="text-2xl font-bold flex items-center gap-2">
+              <span>
+                <Clock size={35} />
+              </span>
+              <span className="tracking-wider">{title}</span>
             </h2>
-            <div className="mt-4 text-md">
+            <div className="mt-4">
               {hour_content.map((time) => (
-                <p className="mt-3 text-md" key={uuidv4()}>
+                <p className="mt-3" key={uuidv4()}>
                   {time}
                 </p>
               ))}
@@ -104,16 +106,16 @@ function ContactUs({ data }: ContactUsProps) {
           <div
             key={uuidv4()}
             id={id}
-            className="bg-[#81E7AF] text-[#2e2e2e] p-10 border-r-4"
+            className="bg-[#81E7AF] text-[#2e2e2e] p-10 border-r-4 border-[#2e2e2e]"
           >
-            <h2 className="text-3xl font-bold flex items-center gap-2">
+            <h2 className="text-2xl font-bold flex items-center gap-2 tracking-wide">
               <span>
                 <MapPin size={35} />
               </span>
-              {title}
+              <span className="tracking-wider">{title}</span>
             </h2>
             {loc_content.map(({ centre_name, centre_address, centre_city }) => (
-              <div key={uuidv4()} className="mt-4 text-md">
+              <div key={uuidv4()} className="mt-4">
                 <p className="mt-4">{centre_name}</p>
                 <p className="mt-4">{centre_address}</p>
                 <p className="mt-4">{centre_city}</p>
@@ -129,21 +131,21 @@ function ContactUs({ data }: ContactUsProps) {
             key={uuidv4()}
             className="bg-[#81E7AF] text-[#2e2e2e] p-10"
           >
-            <h2 className="text-3xl font-bold flex items-center gap-2">
+            <h2 className="text-2xl font-bold flex items-center gap-2">
               <span>
                 <Phone size={35} />
               </span>
-              {title}
+              <span className="tracking-wider">{title}</span>
             </h2>
             {contact_content.map(({ phone, whatsapp, email }) => (
               <div key={uuidv4()}>
-                <p className="mt-4 text-md">
+                <p className="mt-4">
                   <strong>Phone:</strong> {phone}
                 </p>
-                <p className="mt-3 text-md">
+                <p className="mt-3">
                   <strong>WhatsApp (Emergencies only):</strong> {whatsapp}
                 </p>
-                <p className="mt-3 text-md">
+                <p className="mt-3">
                   <strong>Email:</strong> {email}
                 </p>
               </div>
@@ -153,7 +155,6 @@ function ContactUs({ data }: ContactUsProps) {
       </div>
 
       {/* Appointment Request Modal */}
-
       <dialog
         id="medi-contact-modal"
         className="modal modal-bottom sm:modal-middle"
@@ -169,6 +170,7 @@ function ContactUs({ data }: ContactUsProps) {
           <p className="text-sm text-gray-500 mt-2 italic">
             We'll reach out via phone or email to finalize your booking.
           </p>
+          {/* Optional Note: TBD */}
           {/* <p className="text-xs text-red-500 mt-2">
             *Note: Submitting this form does not guarantee an appointment slot.
           </p> */}
@@ -182,7 +184,10 @@ function ContactUs({ data }: ContactUsProps) {
                 className="grid grid-cols-4 gap-2"
               >
                 {/* Daisy UI btn */}
-                <button type="button" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                <button
+                  type="button"
+                  className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                >
                   ✕
                 </button>
 
