@@ -8,7 +8,7 @@ interface ContactUsProps {
   data: MediCentreDB;
 }
 
-type AppointmentFormInputs = {
+interface AppointmentFormInputs {
   firstName: string;
   lastName: string;
   phone: string;
@@ -16,7 +16,7 @@ type AppointmentFormInputs = {
   practitioner: string;
   preferredTime: string;
   reason: string;
-};
+}
 
 function ContactUs({ data }: ContactUsProps) {
   // Destructuring data
@@ -36,9 +36,14 @@ function ContactUs({ data }: ContactUsProps) {
   );
   const mobileRegexPattern = new RegExp(/^[0-9]{10}$/);
 
-  const reqAppointment = () => {
+  const reqAppointment = async (formData: AppointmentFormInputs) => {
+    //Log the user input to the console
+    console.log("Scheduled Appointment:", formData);
+
+    // JSON conversion simulation
+    const json = JSON.stringify(formData);
+    console.log("JSON Payload to be sent to backend:", json);
     reset();
-    console.log("TEST");
   };
 
   return (
@@ -157,7 +162,7 @@ function ContactUs({ data }: ContactUsProps) {
           <h3 className="font-bold text-lg text-center border-b-4 p-2">
             Appointment Request
           </h3>
-          <p className="text-sm text-gray-600 mt-2">
+          <p className="text-sm text-gray-600 mt-3">
             Please fill in your details and our team will get back to you within
             24 hours to confirm your appointment.
           </p>
@@ -177,7 +182,7 @@ function ContactUs({ data }: ContactUsProps) {
                 className="grid grid-cols-4 gap-2"
               >
                 {/* Daisy UI btn */}
-                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                <button type="button" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                   ✕
                 </button>
 
