@@ -28,7 +28,11 @@ function ContactUs({ data }: ContactUsProps) {
     register,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<AppointmentFormInputs>();
+  } = useForm<AppointmentFormInputs>({
+    defaultValues: {
+      practitioner: "",
+    },
+  });
 
   //Regex pattern validations
   const emailRegexPattern = new RegExp(
@@ -329,7 +333,7 @@ function ContactUs({ data }: ContactUsProps) {
                       },
                     })}
                   >
-                    <option className="text-gray-400 text-sm" disabled>
+                    <option className="text-gray-400 text-sm" value="" disabled>
                       Select a practitioner
                     </option>
 
