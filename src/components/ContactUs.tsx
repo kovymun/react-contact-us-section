@@ -42,18 +42,21 @@ function ContactUs({ data }: ContactUsProps) {
   );
   const mobileRegexPattern = new RegExp(/^[0-9]{10}$/);
 
-  //Functions to display toast notifications 
+  //Functions to display toast notifications
   const notifySuccess = () =>
     toast.success("Appointment Scheduled Successfully!", {
-      duration: 4000
+      duration: 4000,
     });
   const notifyError = () =>
     toast.error("Something went wrong! Please try again.", {
-      duration: 4000
+      duration: 4000,
     });
 
   const reqAppointment = async (formData: AppointmentFormInputs) => {
     try {
+      // We are delaying submission here (simulation)
+      await new Promise<void>((resolve) => setTimeout(resolve, 3000));
+
       //Log the user input to the console
       console.log("Scheduled Appointment:", formData);
 
@@ -65,6 +68,8 @@ function ContactUs({ data }: ContactUsProps) {
         document.getElementById("medi-contact-modal") as HTMLDialogElement
       )?.close();
       notifySuccess();
+
+      // Log error to the console / trigger toast notification
     } catch (error) {
       console.error("Failed to schedule appointment:", error);
       notifyError();
@@ -434,6 +439,7 @@ function ContactUs({ data }: ContactUsProps) {
 
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="col-span-4 mt-4 bg-[#2c786c] text-white px-4 py-2 font-semibold cursor-pointer tracking-wide uppercase"
                 >
                   {isSubmitting
