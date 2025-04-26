@@ -8,6 +8,8 @@ interface ContactUsProps {
   data: MediCentreDB;
 }
 
+const x: string = "hello";
+
 interface AppointmentFormInputs {
   firstName: string;
   lastName: string;
