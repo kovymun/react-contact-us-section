@@ -2,13 +2,12 @@ import { Clock, MapPin, Phone, MessageCircleMore } from "lucide-react";
 import { MediCentreDB } from "../types/contact";
 import { v4 as uuidv4 } from "uuid";
 import { useForm, Controller } from "react-hook-form";
+import toast from "react-hot-toast";
 
 // Step 1: Define props interface
 interface ContactUsProps {
   data: MediCentreDB;
 }
-
-const x: string = "hello";
 
 interface AppointmentFormInputs {
   firstName: string;
@@ -43,14 +42,33 @@ function ContactUs({ data }: ContactUsProps) {
   );
   const mobileRegexPattern = new RegExp(/^[0-9]{10}$/);
 
-  const reqAppointment = async (formData: AppointmentFormInputs) => {
-    //Log the user input to the console
-    console.log("Scheduled Appointment:", formData);
+  //Functions to display toast notifications 
+  const notifySuccess = () =>
+    toast.success("Appointment Scheduled Successfully!", {
+      duration: 4000
+    });
+  const notifyError = () =>
+    toast.error("Something went wrong! Please try again.", {
+      duration: 4000
+    });
 
-    // JSON conversion simulation
-    const json = JSON.stringify(formData);
-    console.log("JSON Payload to be sent to backend:", json);
-    reset();
+  const reqAppointment = async (formData: AppointmentFormInputs) => {
+    try {
+      //Log the user input to the console
+      console.log("Scheduled Appointment:", formData);
+
+      // JSON conversion simulation
+      const json = JSON.stringify(formData);
+      console.log("JSON Payload to be sent to backend:", json);
+      reset();
+      (
+        document.getElementById("medi-contact-modal") as HTMLDialogElement
+      )?.close();
+      notifySuccess();
+    } catch (error) {
+      console.error("Failed to schedule appointment:", error);
+      notifyError();
+    }
   };
 
   // User Action - Close the Request Appointment Modal
@@ -420,7 +438,7 @@ function ContactUs({ data }: ContactUsProps) {
                 >
                   {isSubmitting
                     ? "Confirming Appointment..."
-                    : "Request Appointment"}
+                    : "Schedule Appointment"}
                 </button>
               </form>
             </div>
