@@ -85,32 +85,34 @@ function ContactUs({ data }: ContactUsProps) {
   };
 
   return (
-    <div className="w-full h-screen flex flex-col justify-center items-center font-sans">
+    <div className="w-full min-h-dvh flex flex-col justify-center items-center font-sans">
       {/* Contact Us Section Intro */}
       <div
         id="contact-intro"
-        className="w-full bg-[#81E7AF] text-[#2e2e2e] p-8 px-20 border-4 border-[#2e2e2e]"
+        className="flex flex-col items-center justify-center w-full bg-[#81E7AF] text-[#2e2e2e] sm:py-8 sm:px-20 border-b-2 border-[#2e2e2e]"
       >
-        <h1 className="flex items-center justify-center gap-2 text-2xl font-bold uppercase tracking-wide">
-          <MessageCircleMore size={35} />
-          Contact Us
-        </h1>
+        <div className="p-10 sm:p-0">
+          <h1 className="flex items-center justify-center gap-2 text-2xl font-bold uppercase tracking-wide">
+            <MessageCircleMore size={35} />
+            Contact Us
+          </h1>
 
-        <p className="mt-4">
-          We're here to help you feel your best. Whether you're booking an
-          appointment, looking for directions, or have a question for our team,
-          Riverside Medical Centre is just a call or click away.
-        </p>
+          <p className="mt-4 max-w-2xl">
+            We're here to help you feel your best. Whether you're booking an
+            appointment, looking for directions, or have a question for our
+            team, Riverside Medical Centre is just a call or click away.
+          </p>
+        </div>
       </div>
 
       {/* Content-Grid */}
-      <div className="w-full grid grid-cols-3 border-b-4 border-[#2e2e2e]">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-3">
         {/* Opening Hours */}
         {hours.map(({ id, title, hour_content }) => (
           <div
             key={uuidv4()}
             id={id}
-            className="bg-[#81E7AF] text-[#2e2e2e] p-10 border-r-4 border-[#2e2e2e]"
+            className="flex flex-col items-center text-center sm:items-start sm:text-left bg-[#81E7AF] text-[#2e2e2e] px-4 py-8 sm:p-10 border-b-2 border-[#2e2e2e]"
           >
             <h2 className="text-2xl font-bold flex items-center gap-2">
               <span>
@@ -118,9 +120,9 @@ function ContactUs({ data }: ContactUsProps) {
               </span>
               <span className="tracking-wider">{title}</span>
             </h2>
-            <div className="mt-4">
+            <div className="mt-2">
               {hour_content.map((time) => (
-                <p className="mt-3" key={uuidv4()}>
+                <p className="mt-2" key={uuidv4()}>
                   {time}
                 </p>
               ))}
@@ -132,7 +134,7 @@ function ContactUs({ data }: ContactUsProps) {
                 ) as HTMLDialogElement;
                 dialog?.showModal();
               }}
-              className="mt-4 bg-[#2c786c] text-white px-4 py-2 font-semibold cursor-pointer tracking-wide uppercase"
+              className="mt-4 bg-[#2c786c] text-white text-sm px-4 py-2 font-semibold cursor-pointer tracking-wide uppercase"
             >
               Request an Appointment
             </button>
@@ -144,7 +146,7 @@ function ContactUs({ data }: ContactUsProps) {
           <div
             key={uuidv4()}
             id={id}
-            className="bg-[#81E7AF] text-[#2e2e2e] p-10 border-r-4 border-[#2e2e2e]"
+            className="flex flex-col items-center text-center sm:items-start sm:text-left bg-[#81E7AF] text-[#2e2e2e] px-4 py-8 sm:p-10 border-b-2 sm:border-x-2 border-[#2e2e2e]"
           >
             <h2 className="text-2xl font-bold flex items-center gap-2 tracking-wide">
               <span>
@@ -153,10 +155,10 @@ function ContactUs({ data }: ContactUsProps) {
               <span className="tracking-wider">{title}</span>
             </h2>
             {loc_content.map(({ centre_name, centre_address, centre_city }) => (
-              <div key={uuidv4()} className="mt-4">
-                <p className="mt-4">{centre_name}</p>
-                <p className="mt-4">{centre_address}</p>
-                <p className="mt-4">{centre_city}</p>
+              <div key={uuidv4()} className="mt-2">
+                <p className="mt-2">{centre_name}</p>
+                <p className="mt-2">{centre_address}</p>
+                <p className="mt-2">{centre_city}</p>
               </div>
             ))}
           </div>
@@ -167,7 +169,7 @@ function ContactUs({ data }: ContactUsProps) {
           <div
             id={id}
             key={uuidv4()}
-            className="bg-[#81E7AF] text-[#2e2e2e] p-10"
+            className="flex flex-col items-center text-center sm:items-start sm:text-left bg-[#81E7AF] text-[#2e2e2e] px-4 py-8 sm:p-10 border-b-2 border-[#2e2e2e]"
           >
             <h2 className="text-2xl font-bold flex items-center gap-2">
               <span>
@@ -176,14 +178,14 @@ function ContactUs({ data }: ContactUsProps) {
               <span className="tracking-wider">{title}</span>
             </h2>
             {contact_content.map(({ phone, whatsapp, email }) => (
-              <div key={uuidv4()}>
-                <p className="mt-4">
+              <div key={uuidv4()} className="mt-2">
+                <p className="mt-2">
                   <strong>Phone:</strong> {phone}
                 </p>
-                <p className="mt-3">
+                <p className="mt-2">
                   <strong>WhatsApp (Emergencies only):</strong> {whatsapp}
                 </p>
-                <p className="mt-3">
+                <p className="mt-2">
                   <strong>Email:</strong> {email}
                 </p>
               </div>
