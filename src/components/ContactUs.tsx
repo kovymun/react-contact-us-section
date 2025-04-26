@@ -1,7 +1,7 @@
 import { Clock, MapPin, Phone, MessageCircleMore } from "lucide-react";
 import { MediCentreDB } from "../types/contact";
 import { v4 as uuidv4 } from "uuid";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 
 // Step 1: Define props interface
 interface ContactUsProps {
@@ -27,6 +27,7 @@ function ContactUs({ data }: ContactUsProps) {
     handleSubmit,
     register,
     reset,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<AppointmentFormInputs>({
     defaultValues: {
@@ -217,7 +218,7 @@ function ContactUs({ data }: ContactUsProps) {
                       <input
                         type="text"
                         placeholder="First"
-                        className="block w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm focus:outline-none leading-relaxed"
+                        className="block w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm leading-relaxed focus:outline-2 focus:outline-offset-1 focus:outline-[#81E7AF]"
                         {...register("firstName", {
                           required: {
                             value: true,
@@ -233,11 +234,10 @@ function ContactUs({ data }: ContactUsProps) {
                     </div>
 
                     <div>
-                      {" "}
                       <input
                         type="text"
                         placeholder="Last"
-                        className="block w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm focus:outline-none leading-relaxed"
+                        className="block w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm leading-relaxed focus:outline-2 focus:outline-offset-1 focus:outline-[#81E7AF]"
                         {...register("lastName", {
                           required: {
                             value: true,
@@ -262,10 +262,11 @@ function ContactUs({ data }: ContactUsProps) {
                   >
                     Contact Phone
                   </label>
+
                   <input
                     type="text"
                     placeholder="Phone"
-                    className="block w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm focus:outline-none leading-relaxed"
+                    className="block w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm leading-relaxed focus:outline-2 focus:outline-offset-1 focus:outline-[#81E7AF]"
                     maxLength={10}
                     {...register("phone", {
                       required: {
@@ -298,7 +299,7 @@ function ContactUs({ data }: ContactUsProps) {
                   <input
                     type="email"
                     placeholder="Email"
-                    className="block w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm focus:outline-none leading-relaxed"
+                    className="block w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm leading-relaxed focus:outline-2 focus:outline-offset-1 focus:outline-[#81E7AF]"
                     {...register("email", {
                       required: {
                         value: true,
@@ -323,35 +324,48 @@ function ContactUs({ data }: ContactUsProps) {
                     Who do you need to see?
                   </label>
 
-                  <select
-                    className="px-4 py-2 w-full border border-gray-300 text-sm mt-1"
-                    defaultValue="Select a practitioner"
-                    {...register("practitioner", {
+                  <Controller
+                    name="practitioner"
+                    control={control}
+                    rules={{
                       required: {
                         value: true,
                         message: "Select a healthcare provider from the list",
                       },
-                    })}
-                  >
-                    <option className="text-gray-400 text-sm" value="" disabled>
-                      Select a practitioner
-                    </option>
+                    }}
+                    render={({ field }) => (
+                      <>
+                        <select
+                          {...field}
+                          className="px-4 py-2 w-full border border-gray-300 text-sm mt-1"
+                        >
+                          <option
+                            className="text-gray-400 text-sm"
+                            value=""
+                            disabled
+                          >
+                            Select a practitioner
+                          </option>
 
-                    {practitioners.map(({ doctor, medicalField }) => (
-                      <option
-                        key={uuidv4()}
-                        className="text-[#2e2e2e]"
-                        value={`${doctor} - ${medicalField}`}
-                      >
-                        {medicalField} - {doctor}
-                      </option>
-                    ))}
-                  </select>
-                  {errors.practitioner && (
-                    <p className="text-xs text-red-500 mt-2">
-                      {errors.practitioner.message}
-                    </p>
-                  )}
+                          {practitioners.map(({ doctor, medicalField }) => (
+                            <option
+                              key={uuidv4()}
+                              className="text-[#2e2e2e]"
+                              value={`${doctor} - ${medicalField}`}
+                            >
+                              {medicalField} - {doctor}
+                            </option>
+                          ))}
+                        </select>
+
+                        {errors.practitioner && (
+                          <p className="text-xs text-red-500 mt-2">
+                            {errors.practitioner.message}
+                          </p>
+                        )}
+                      </>
+                    )}
+                  />
                 </div>
 
                 {/* Preferred Time: Date + Time Picker */}
@@ -377,12 +391,12 @@ function ContactUs({ data }: ContactUsProps) {
                 </div>
 
                 {/* Reason for Visit */}
-                <div className="md:col-span-4 text-sm mt-2">
+                <div className="md:col-span-4 text-sm mt-2 text-[#]">
                   <label className="block mb-1 font-medium my-1">
                     Reason for Visit
                   </label>
                   <textarea
-                    className="border border-gray-300 w-full"
+                    className="px-4 py-2 border border-gray-300 w-full text-[#2e2e2e] focus:outline-2 focus:outline-offset-1 focus:outline-[#81E7AF]"
                     rows={3}
                     {...register("reason", {
                       required: {
