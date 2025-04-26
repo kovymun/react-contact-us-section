@@ -55,32 +55,34 @@ function ContactUs({ data }: ContactUsProps) {
   };
 
   return (
-    <div className="w-full h-dvh flex flex-col justify-center items-center font-sans">
+    <div className="w-full min-h-dvh flex flex-col justify-center items-center font-sans">
       {/* Contact Us Section Intro */}
       <div
         id="contact-intro"
-        className="w-full bg-[#81E7AF] text-[#2e2e2e] p-8 px-20 border-b-4 border-[#2e2e2e]"
+        className="flex flex-col items-center justify-center w-full bg-[#81E7AF] text-[#2e2e2e] sm:py-8 sm:px-20 border-b-2 border-[#2e2e2e]"
       >
-        <h1 className="flex items-center justify-center gap-2 text-2xl font-bold uppercase tracking-wide">
-          <MessageCircleMore size={35} />
-          Contact Us
-        </h1>
-
-        <p className="mt-4">
-          We're here to help you feel your best. Whether you're booking an
-          appointment, looking for directions, or have a question for our team,
-          Riverside Medical Centre is just a call or click away.
-        </p>
+        <div className="p-10 sm:p-0">
+          {" "}
+          <h1 className="flex sm:items-center sm:justify-center gap-2 text-2xl font-bold uppercase tracking-wide">
+            <MessageCircleMore size={35} />
+            Contact Us
+          </h1>
+          <p className="mt-4 max-w-2xl border-2 text-balance sm:text-wrap">
+            We're here to help you feel your best. Whether you're booking an
+            appointment, looking for directions, or have a question for our
+            team, Riverside Medical Centre is just a call or click away.
+          </p>
+        </div>
       </div>
 
       {/* Content-Grid */}
-      <div className="w-full grid gird-cols-1 sm:grid-cols-3">
+      <div className="w-full grid grid-cols-1 sm:grid-cols-3">
         {/* Opening Hours */}
         {hours.map(({ id, title, hour_content }) => (
           <div
             key={uuidv4()}
             id={id}
-            className="flex flex-col items-center text-center sm:items-start sm:text-left bg-[#81E7AF] text-[#2e2e2e] p-10 border-b-4 sm:border-r-4 border-[#2e2e2e]"
+            className="flex flex-col items-center text-center sm:items-start sm:text-left bg-[#81E7AF] text-[#2e2e2e] p-10 border-b-2 border-[#2e2e2e]"
           >
             <h2 className="text-2xl font-bold flex items-center gap-2">
               <span>
@@ -114,7 +116,7 @@ function ContactUs({ data }: ContactUsProps) {
           <div
             key={uuidv4()}
             id={id}
-            className="flex flex-col items-center text-center sm:items-start sm:text-left bg-[#81E7AF] text-[#2e2e2e] p-10 border-b-4 sm:border-r-4 border-[#2e2e2e]"
+            className="flex flex-col items-center text-center sm:items-start sm:text-left bg-[#81E7AF] text-[#2e2e2e] p-10 border-b-2 border-[#2e2e2e]"
           >
             <h2 className="text-2xl font-bold flex items-center gap-2 tracking-wide">
               <span>
@@ -137,7 +139,7 @@ function ContactUs({ data }: ContactUsProps) {
           <div
             id={id}
             key={uuidv4()}
-            className="flex flex-col items-center text-center sm:items-start sm:text-left bg-[#81E7AF] text-[#2e2e2e] p-10 border-b-4 sm:border-r-0"
+            className="flex flex-col items-center text-center sm:items-start sm:text-left bg-[#81E7AF] text-[#2e2e2e] p-10"
           >
             <h2 className="text-2xl font-bold flex items-center gap-2">
               <span>
