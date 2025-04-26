@@ -55,11 +55,11 @@ function ContactUs({ data }: ContactUsProps) {
   };
 
   return (
-    <div className="w-full h-screen flex flex-col justify-center items-center font-sans">
+    <div className="w-full h-dvh flex flex-col justify-center items-center font-sans">
       {/* Contact Us Section Intro */}
       <div
         id="contact-intro"
-        className="w-full bg-[#81E7AF] text-[#2e2e2e] p-8 px-20 border-4 border-[#2e2e2e]"
+        className="w-full bg-[#81E7AF] text-[#2e2e2e] p-8 px-20 border-b-4 border-[#2e2e2e]"
       >
         <h1 className="flex items-center justify-center gap-2 text-2xl font-bold uppercase tracking-wide">
           <MessageCircleMore size={35} />
@@ -74,13 +74,13 @@ function ContactUs({ data }: ContactUsProps) {
       </div>
 
       {/* Content-Grid */}
-      <div className="w-full grid grid-cols-3 border-b-4 border-[#2e2e2e]">
+      <div className="w-full grid gird-cols-1 sm:grid-cols-3">
         {/* Opening Hours */}
         {hours.map(({ id, title, hour_content }) => (
           <div
             key={uuidv4()}
             id={id}
-            className="bg-[#81E7AF] text-[#2e2e2e] p-10 border-r-4 border-[#2e2e2e]"
+            className="flex flex-col items-center text-center sm:items-start sm:text-left bg-[#81E7AF] text-[#2e2e2e] p-10 border-b-4 sm:border-r-4 border-[#2e2e2e]"
           >
             <h2 className="text-2xl font-bold flex items-center gap-2">
               <span>
@@ -102,7 +102,7 @@ function ContactUs({ data }: ContactUsProps) {
                 ) as HTMLDialogElement;
                 dialog?.showModal();
               }}
-              className="mt-4 bg-[#2c786c] text-white px-4 py-2 font-semibold cursor-pointer tracking-wide uppercase"
+              className="mt-4 bg-[#2c786c] text-white text-sm lg:text-xs px-4 py-2 font-semibold cursor-pointer tracking-wide uppercase"
             >
               Request an Appointment
             </button>
@@ -114,7 +114,7 @@ function ContactUs({ data }: ContactUsProps) {
           <div
             key={uuidv4()}
             id={id}
-            className="bg-[#81E7AF] text-[#2e2e2e] p-10 border-r-4 border-[#2e2e2e]"
+            className="flex flex-col items-center text-center sm:items-start sm:text-left bg-[#81E7AF] text-[#2e2e2e] p-10 border-b-4 sm:border-r-4 border-[#2e2e2e]"
           >
             <h2 className="text-2xl font-bold flex items-center gap-2 tracking-wide">
               <span>
@@ -137,7 +137,7 @@ function ContactUs({ data }: ContactUsProps) {
           <div
             id={id}
             key={uuidv4()}
-            className="bg-[#81E7AF] text-[#2e2e2e] p-10"
+            className="flex flex-col items-center text-center sm:items-start sm:text-left bg-[#81E7AF] text-[#2e2e2e] p-10 border-b-4 sm:border-r-0"
           >
             <h2 className="text-2xl font-bold flex items-center gap-2">
               <span>
@@ -147,7 +147,7 @@ function ContactUs({ data }: ContactUsProps) {
             </h2>
             {contact_content.map(({ phone, whatsapp, email }) => (
               <div key={uuidv4()}>
-                <p className="mt-4">
+                <p className="mt-3">
                   <strong>Phone:</strong> {phone}
                 </p>
                 <p className="mt-3">
@@ -329,7 +329,7 @@ function ContactUs({ data }: ContactUsProps) {
                       },
                     })}
                   >
-                    <option className="text-gray-400 text-sm" disabled>
+                    <option className="text-gray-400 text-sm" value="" disabled>
                       Select a practitioner
                     </option>
 
