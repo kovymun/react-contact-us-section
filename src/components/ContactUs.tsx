@@ -100,7 +100,9 @@ function ContactUs({ data }: ContactUsProps) {
           <p className="mt-4 max-w-2xl">
             We're here to help you feel your best. Whether you're booking an
             appointment, looking for directions, or have a question for our
-            team, Riverside Medical Centre is just a call or click away.
+            team,{" "}
+            <span className="font-semibold">Riverside Medical Centre</span> is
+            just a call or click away.
           </p>
         </div>
       </div>
@@ -118,7 +120,7 @@ function ContactUs({ data }: ContactUsProps) {
               <span>
                 <Clock size={35} />
               </span>
-              <span className="tracking-wider">{title}</span>
+              <span className="tracking-wide">{title}</span>
             </h2>
             <div className="mt-2">
               {hour_content.map((time) => (
@@ -152,11 +154,11 @@ function ContactUs({ data }: ContactUsProps) {
               <span>
                 <MapPin size={35} />
               </span>
-              <span className="tracking-wider">{title}</span>
+              <span className="tracking-wide">{title}</span>
             </h2>
             {loc_content.map(({ centre_name, centre_address, centre_city }) => (
               <div key={uuidv4()} className="mt-2">
-                <p className="mt-2">{centre_name}</p>
+                <p className="mt-2 font-semibold">{centre_name}</p>
                 <p className="mt-2">{centre_address}</p>
                 <p className="mt-2">{centre_city}</p>
               </div>
@@ -175,18 +177,23 @@ function ContactUs({ data }: ContactUsProps) {
               <span>
                 <Phone size={35} />
               </span>
-              <span className="tracking-wider">{title}</span>
+              <span className="tracking-wide">{title}</span>
             </h2>
             {contact_content.map(({ phone, whatsapp, email }) => (
               <div key={uuidv4()} className="mt-2">
                 <p className="mt-2">
-                  <strong>Phone:</strong> {phone}
+                  <span className="font-semibold tracking-wide">Phone:</span>{" "}
+                  {phone}
                 </p>
                 <p className="mt-2">
-                  <strong>WhatsApp (Emergencies only):</strong> {whatsapp}
+                  <span className="font-semibold tracking-wide">
+                    WhatsApp (Emergencies only):
+                  </span>{" "}
+                  {whatsapp}
                 </p>
                 <p className="mt-2">
-                  <strong>Email:</strong> {email}
+                  <span className="font-semibold tracking-wide">Email:</span>{" "}
+                  {email}
                 </p>
               </div>
             ))}
