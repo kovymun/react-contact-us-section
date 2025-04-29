@@ -204,7 +204,7 @@ function ContactUs({ data }: ContactUsProps) {
       {/* Appointment Request Modal */}
       <dialog
         id="medi-contact-modal"
-        className="modal modal-bottom sm:modal-middle"
+        className="modal modal-middle"
       >
         <div className="modal-box bg-white text-[#2e2e2e] max-w-content overflow-auto">
           <h3 className="font-bold text-lg text-center border-b-4 p-2">
@@ -224,11 +224,10 @@ function ContactUs({ data }: ContactUsProps) {
 
           <div className="modal-action">
             <div className="w-full">
-              {" "}
               <form
                 method="dialog"
                 onSubmit={handleSubmit(reqAppointment)}
-                className="grid grid-cols-4 gap-2"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full"
               >
                 {/* Daisy UI btn */}
                 <button
@@ -240,56 +239,58 @@ function ContactUs({ data }: ContactUsProps) {
                 </button>
 
                 {/* Patient Name */}
-                <div className="col-span-4">
+                <div id="first-name" className="w-full">
                   <label
                     htmlFor="firstName"
                     className="block mb-1 font-medium text-sm"
                   >
-                    Patient Name
+                    First Name
                   </label>
-                  <div className="flex gap-2 bg-white">
-                    <div>
-                      <input
-                        type="text"
-                        placeholder="First"
-                        className="block w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm leading-relaxed focus:outline-2 focus:outline-offset-1 focus:outline-[#81E7AF]"
-                        {...register("firstName", {
-                          required: {
-                            value: true,
-                            message: "Please enter the patient's first name",
-                          },
-                        })}
-                      />
-                      {errors.firstName && (
-                        <p className="text-xs text-red-500 mt-2">
-                          {errors.firstName.message}
-                        </p>
-                      )}
-                    </div>
+                  <input
+                    type="text"
+                    placeholder="First"
+                    className="w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm leading-relaxed focus:outline-2 focus:outline-offset-1 focus:outline-[#81E7AF]"
+                    {...register("firstName", {
+                      required: {
+                        value: true,
+                        message: "Please enter the patient's first name",
+                      },
+                    })}
+                  />
+                  {errors.firstName && (
+                    <p className="text-xs text-red-500 mt-2">
+                      {errors.firstName.message}
+                    </p>
+                  )}
+                </div>
 
-                    <div>
-                      <input
-                        type="text"
-                        placeholder="Last"
-                        className="block w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm leading-relaxed focus:outline-2 focus:outline-offset-1 focus:outline-[#81E7AF]"
-                        {...register("lastName", {
-                          required: {
-                            value: true,
-                            message: "Please enter the patient's last name",
-                          },
-                        })}
-                      />
-                      {errors.lastName && (
-                        <p className="text-xs text-red-500 mt-2">
-                          {errors.lastName.message}
-                        </p>
-                      )}
-                    </div>
-                  </div>
+                <div id="last-name" className="w-full">
+                  <label
+                    htmlFor="lastName"
+                    className="block mb-1 font-medium text-sm"
+                  >
+                    Last Name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Last"
+                    className="w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm leading-relaxed focus:outline-2 focus:outline-offset-1 focus:outline-[#81E7AF]"
+                    {...register("lastName", {
+                      required: {
+                        value: true,
+                        message: "Please enter the patient's last name",
+                      },
+                    })}
+                  />
+                  {errors.lastName && (
+                    <p className="text-xs text-red-500 mt-2">
+                      {errors.lastName.message}
+                    </p>
+                  )}
                 </div>
 
                 {/* Patient Contact Info */}
-                <div className="col-span-2 mt-2">
+                <div className="mt-2 w-full">
                   <label
                     htmlFor="number"
                     className="block mb-1 font-medium text-sm"
@@ -300,7 +301,7 @@ function ContactUs({ data }: ContactUsProps) {
                   <input
                     type="text"
                     placeholder="Phone"
-                    className="block w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm leading-relaxed focus:outline-2 focus:outline-offset-1 focus:outline-[#81E7AF]"
+                    className="w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm leading-relaxed focus:outline-2 focus:outline-offset-1 focus:outline-[#81E7AF]"
                     maxLength={10}
                     {...register("phone", {
                       required: {
@@ -323,7 +324,7 @@ function ContactUs({ data }: ContactUsProps) {
                     </p>
                   )}
                 </div>
-                <div className="col-span-2 mt-2">
+                <div className="mt-2 w-full">
                   <label
                     htmlFor="email"
                     className="block mb-1 font-medium text-sm"
@@ -333,7 +334,7 @@ function ContactUs({ data }: ContactUsProps) {
                   <input
                     type="email"
                     placeholder="Email"
-                    className="block w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm leading-relaxed focus:outline-2 focus:outline-offset-1 focus:outline-[#81E7AF]"
+                    className="w-full px-4 py-2 text-[#2e2e2e] bg-transparent border border-gray-300 placeholder-gray-400 placeholder:text-sm leading-relaxed focus:outline-2 focus:outline-offset-1 focus:outline-[#81E7AF]"
                     {...register("email", {
                       required: {
                         value: true,
@@ -353,8 +354,8 @@ function ContactUs({ data }: ContactUsProps) {
                 </div>
 
                 {/* Who to See */}
-                <div className="md:col-span-4 bg-white mt-2">
-                  <label className="block mb-1 font-medium text-sm">
+                <div className="col-span-full bg-white mt-2">
+                  <label className="block w-full mb-1 font-medium text-sm">
                     Who do you need to see?
                   </label>
 
@@ -403,13 +404,13 @@ function ContactUs({ data }: ContactUsProps) {
                 </div>
 
                 {/* Preferred Time: Date + Time Picker */}
-                <div className="md:col-span-4 text-sm mt-2">
+                <div className="col-span-full text-sm mt-2">
                   <label className="block mb-1 font-medium text-sm">
                     Preferred Appointment Time
                   </label>
                   <input
                     type="datetime-local"
-                    className="px-4 py-2 border border-gray-300 w-full text-sm"
+                    className="w-full px-4 py-2 border border-gray-300 text-sm"
                     {...register("preferredTime", {
                       required: {
                         value: true,
@@ -425,7 +426,7 @@ function ContactUs({ data }: ContactUsProps) {
                 </div>
 
                 {/* Reason for Visit */}
-                <div className="md:col-span-4 text-sm mt-2 text-[#]">
+                <div className="col-span-full text-sm mt-2">
                   <label className="block mb-1 font-medium my-1">
                     Reason for Visit
                   </label>
@@ -449,7 +450,7 @@ function ContactUs({ data }: ContactUsProps) {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="col-span-4 mt-4 bg-[#2c786c] text-white px-4 py-2 font-semibold cursor-pointer tracking-wide uppercase"
+                  className="col-span-full mt-4 bg-[#2c786c] text-white px-4 py-2 font-semibold cursor-pointer tracking-wide uppercase"
                 >
                   {isSubmitting
                     ? "Confirming Appointment..."
