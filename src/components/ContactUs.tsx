@@ -1,8 +1,8 @@
-import { Clock, MapPin, Phone, MessageCircleMore } from "lucide-react";
-import { MediCentreDB } from "../types/contact";
-import { v4 as uuidv4 } from "uuid";
 import { useForm, Controller } from "react-hook-form";
 import toast from "react-hot-toast";
+import { v4 as uuidv4 } from "uuid";
+import { Clock, MapPin, Phone, MessageCircleMore } from "lucide-react";
+import { MediCentreDB } from "../types/contact";
 
 // Step 1: Define props interface
 interface ContactUsProps {
@@ -202,10 +202,7 @@ function ContactUs({ data }: ContactUsProps) {
       </div>
 
       {/* Appointment Request Modal */}
-      <dialog
-        id="medi-contact-modal"
-        className="modal modal-middle"
-      >
+      <dialog id="medi-contact-modal" className="modal modal-middle">
         <div className="modal-box bg-white text-[#2e2e2e] max-w-content overflow-auto">
           <h3 className="font-bold text-lg text-center border-b-4 p-2">
             Appointment Request
@@ -264,7 +261,7 @@ function ContactUs({ data }: ContactUsProps) {
                   )}
                 </div>
 
-                <div id="last-name" className="w-full">
+                <div id="last-name" className="w-full mt-2 sm:mt-0">
                   <label
                     htmlFor="lastName"
                     className="block mb-1 font-medium text-sm"
