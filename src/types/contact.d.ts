@@ -4,7 +4,10 @@
 interface MediCentreHours {
   id: string;
   title: string;
-  hour_content: string[];
+  hour_content: {
+    id: string;
+    text: string;
+  }[];
 }
 
 interface MediCentreLocation {

@@ -1,0 +1,12 @@
+# Allow all bots to crawl everything except admin section
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Allow: /
+
+# Block a specific bot (e.g., a bot called "BadBot")
+User-agent: BadBot
+Disallow: /
+
+# Sitemap location (important for SEO)
+Sitemap: https://yoursite.com/sitemap.xml
