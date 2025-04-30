@@ -1,6 +1,6 @@
 import { useForm, Controller } from "react-hook-form";
 import toast from "react-hot-toast";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 import { Clock, MapPin, Phone, MessageCircleMore } from "lucide-react";
 import { MediCentreDB } from "../types/contact";
 
@@ -112,7 +112,7 @@ function ContactUs({ data }: ContactUsProps) {
         {/* Opening Hours */}
         {hours.map(({ id, title, hour_content }) => (
           <div
-            key={uuidv4()}
+            key={id}
             id={id}
             className="flex flex-col items-center text-center sm:items-start sm:text-left bg-[#81E7AF] text-[#2e2e2e] px-4 py-8 sm:p-10 border-b-2 border-[#2e2e2e]"
           >
@@ -123,9 +123,9 @@ function ContactUs({ data }: ContactUsProps) {
               <span className="tracking-wide">{title}</span>
             </h2>
             <div className="mt-2">
-              {hour_content.map((time) => (
-                <p className="mt-2" key={uuidv4()}>
-                  {time}
+              {hour_content.map(({ id, text }) => (
+                <p className="mt-2" key={id}>
+                  {text}
                 </p>
               ))}
             </div>
@@ -146,7 +146,7 @@ function ContactUs({ data }: ContactUsProps) {
         {/* Location */}
         {location.map(({ id, title, loc_content }) => (
           <div
-            key={uuidv4()}
+            key={id}
             id={id}
             className="flex flex-col items-center text-center sm:items-start sm:text-left bg-[#81E7AF] text-[#2e2e2e] px-4 py-8 sm:p-10 border-b-2 sm:border-x-2 border-[#2e2e2e]"
           >
@@ -156,13 +156,15 @@ function ContactUs({ data }: ContactUsProps) {
               </span>
               <span className="tracking-wide">{title}</span>
             </h2>
-            {loc_content.map(({ centre_name, centre_address, centre_city }) => (
-              <div key={uuidv4()} className="mt-2">
-                <p className="mt-2 font-semibold">{centre_name}</p>
-                <p className="mt-2">{centre_address}</p>
-                <p className="mt-2">{centre_city}</p>
-              </div>
-            ))}
+            {loc_content.map(
+              ({ id, centre_name, centre_address, centre_city }) => (
+                <div key={id} className="mt-2">
+                  <p className="mt-2 font-semibold">{centre_name}</p>
+                  <p className="mt-2">{centre_address}</p>
+                  <p className="mt-2">{centre_city}</p>
+                </div>
+              )
+            )}
           </div>
         ))}
 
@@ -170,7 +172,7 @@ function ContactUs({ data }: ContactUsProps) {
         {contact.map(({ id, title, contact_content }) => (
           <div
             id={id}
-            key={uuidv4()}
+            key={id}
             className="flex flex-col items-center text-center sm:items-start sm:text-left bg-[#81E7AF] text-[#2e2e2e] px-4 py-8 sm:p-10 border-b-2 border-[#2e2e2e]"
           >
             <h2 className="text-2xl font-bold flex items-center gap-2">
@@ -179,8 +181,8 @@ function ContactUs({ data }: ContactUsProps) {
               </span>
               <span className="tracking-wide">{title}</span>
             </h2>
-            {contact_content.map(({ phone, whatsapp, email }) => (
-              <div key={uuidv4()} className="mt-2">
+            {contact_content.map(({ id, phone, whatsapp, email }) => (
+              <div key={id} className="mt-2">
                 <p className="mt-2">
                   <span className="font-semibold tracking-wide">Phone:</span>{" "}
                   {phone}
@@ -379,15 +381,17 @@ function ContactUs({ data }: ContactUsProps) {
                             Select a practitioner
                           </option>
 
-                          {practitioners.map(({ doctor, medicalField }) => (
-                            <option
-                              key={uuidv4()}
-                              className="text-[#2e2e2e]"
-                              value={`${doctor} - ${medicalField}`}
-                            >
-                              {medicalField} - {doctor}
-                            </option>
-                          ))}
+                          {practitioners.map(
+                            ({ practice_id, doctor, medicalField }) => (
+                              <option
+                                key={practice_id}
+                                className="text-[#2e2e2e]"
+                                value={`${doctor} - ${medicalField}`}
+                              >
+                                {medicalField} - {doctor}
+                              </option>
+                            )
+                          )}
                         </select>
 
                         {errors.practitioner && (
