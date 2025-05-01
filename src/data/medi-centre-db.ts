@@ -1,5 +1,6 @@
 import { MediCentreDB } from "../types/contact";
 
+// The main database object that stores information about the medical centre
 export const mediCentreDB: MediCentreDB = {
   hours: [
     {

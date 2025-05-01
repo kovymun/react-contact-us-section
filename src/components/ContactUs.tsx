@@ -3,11 +3,12 @@ import toast from "react-hot-toast";
 import { Clock, MapPin, Phone, MessageCircleMore } from "lucide-react";
 import { MediCentreDB } from "../types/contact";
 
-// Props Interface
+// Component Props interface
 interface ContactUsProps {
   data: MediCentreDB;
 }
 
+// Appointment Form Interface - define shape of object
 interface AppointmentFormInputs {
   firstName: string;
   lastName: string;
@@ -19,10 +20,10 @@ interface AppointmentFormInputs {
 }
 
 function ContactUs({ data }: ContactUsProps) {
-  // Destructuring data
+  // Destructuring medi-clinic data
   const { hours, location, contact, practitioners } = data;
 
-  // useForm hook
+  // Initialize form with react-hook-form
   const {
     handleSubmit,
     register,
@@ -35,33 +36,38 @@ function ContactUs({ data }: ContactUsProps) {
     },
   });
 
-  //Regex pattern validations
+  // Validation Regex patterns
   const emailRegexPattern = new RegExp(
     /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/
   );
   const mobileRegexPattern = new RegExp(/^[0-9]{10}$/);
 
-  //Functions to display toast notifications
+  // Show success toast message
   const notifySuccess = () =>
     toast.success("Appointment Scheduled Successfully!", {
       duration: 4000,
     });
+
+  // Show error toast message
   const notifyError = () =>
     toast.error("Something went wrong! Please try again.", {
       duration: 4000,
     });
 
+  // Handling form submission
   const reqAppointment = async (formData: AppointmentFormInputs) => {
     try {
-      // We are delaying submission here (simulation)
+      // Simulate async delay
       await new Promise<void>((resolve) => setTimeout(resolve, 3000));
 
-      //Log the user input to the console
+      //Log the submitted user input to the console
       console.log("Scheduled Appointment:", formData);
 
       // JSON conversion simulation
       const json = JSON.stringify(formData);
       console.log("JSON Payload to be sent to backend:", json);
+
+      // Reset form and close modal
       reset();
       (
         document.getElementById("medi-contact-modal") as HTMLDialogElement
@@ -75,7 +81,7 @@ function ContactUs({ data }: ContactUsProps) {
     }
   };
 
-  // User Action - Close the Request Appointment Modal
+  // User Action - Handle modal close
   const handleModalClose = async () => {
     reset();
     (
@@ -215,10 +221,6 @@ function ContactUs({ data }: ContactUsProps) {
           <p className="text-sm text-gray-500 mt-2 italic">
             We'll reach out via phone or email to finalize your booking.
           </p>
-          {/* Optional Note: TBD */}
-          {/* <p className="text-xs text-red-500 mt-2">
-            *Note: Submitting this form does not guarantee an appointment slot.
-          </p> */}
 
           <div className="modal-action">
             <div className="w-full">
@@ -227,7 +229,6 @@ function ContactUs({ data }: ContactUsProps) {
                 onSubmit={handleSubmit(reqAppointment)}
                 className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full"
               >
-                {/* Daisy UI btn */}
                 <button
                   type="button"
                   className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
@@ -351,9 +352,12 @@ function ContactUs({ data }: ContactUsProps) {
                   )}
                 </div>
 
-                {/* Who to See */}
+                {/* Practitioner: Who to See */}
                 <div className="col-span-full bg-white mt-2">
-                  <label className="block w-full mb-1 font-medium text-sm">
+                  <label
+                    htmlFor="practitioner"
+                    className="block w-full mb-1 font-medium text-sm"
+                  >
                     Who do you need to see?
                   </label>
 
@@ -405,7 +409,10 @@ function ContactUs({ data }: ContactUsProps) {
 
                 {/* Preferred Time: Date + Time Picker */}
                 <div className="col-span-full text-sm mt-2">
-                  <label className="block mb-1 font-medium text-sm">
+                  <label
+                    htmlFor="appointment-time"
+                    className="block mb-1 font-medium text-sm"
+                  >
                     Preferred Appointment Time
                   </label>
                   <input
@@ -427,7 +434,10 @@ function ContactUs({ data }: ContactUsProps) {
 
                 {/* Reason for Visit */}
                 <div className="col-span-full text-sm mt-2">
-                  <label className="block mb-1 font-medium my-1">
+                  <label
+                    htmlFor="reason-for-visit"
+                    className="block mb-1 font-medium my-1"
+                  >
                     Reason for Visit
                   </label>
                   <textarea
