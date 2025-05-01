@@ -1,10 +1,9 @@
 import { useForm, Controller } from "react-hook-form";
 import toast from "react-hot-toast";
-// import { v4 as uuidv4 } from "uuid";
 import { Clock, MapPin, Phone, MessageCircleMore } from "lucide-react";
 import { MediCentreDB } from "../types/contact";
 
-// Step 1: Define props interface
+// Props Interface
 interface ContactUsProps {
   data: MediCentreDB;
 }
