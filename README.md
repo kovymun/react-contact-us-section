@@ -1,3 +1,38 @@
+### Table of Contents:
+
+- [Description and Purpose](#description-and-purpose)
+- [Disclaimer](#disclaimer)
+- [Key Features](#key-features)
+- [Tools and Programming languages used](#tools-and-programming-languages-used)
+- [Installation Guide](#installation-guide)
+- [Usage guide](#usage-guide)
+
+## Healthcare Contact & Appointment UI Component (React + TypeScript)
+
+### Description and Purpose:
+
+This is a small front-end project built using **React** and **TypeScript**, designed to simulate a simple yet functional **Contact Us** section for a fictional medical centre - _Riverside Medical Centre_. It mimics a real-world user experience that could easily be part of a modern healthcare provider's website, offering both contact information and an interactive way for patients to request appointments online.
+
+### Disclaimer
+
+All names, addresses, locations, and contact details used in this project, such as _Riverside Medical Centre_, are entirely fictional and intended solely for demonstration purposes to showcase how a healthcare contact form might appear. Any resemblance to real individuals, clinics, or organizations is purely coincidental.
+
+## Installation Guide
+
+Follow these steps to set up the project on your local machine:
+
+### Pre-requisites:
+
+- Node.js (v18 or later), which includes npm by default. LINK: https://nodejs.org/en
+
+### Steps:
+
+- **Clone the repository:** Open your terminal and run: git clone https://github.com/kovymun/react-contact-us-section.git
+- **Navigate into the project directory:** cd `<directory-name>`
+- **Install dependencies:** npm install
+- **Start the development server:** npm run dev
+- The project should now be running locally at localhost:5173
+
 ## Performance
 
 This project's performance is evaluated using Google Lighthouse, run locally on the _localhost_ URL to simulate how the app would behave in a production environment.
@@ -23,9 +58,9 @@ This workflow ensures performance testing reflects a real world scenario, helpin
 
 ### Initial Performance Score:
 
-<img width="338" alt="Image" src="https://github.com/user-attachments/assets/e845a54e-d20e-4555-8e3d-37e46b0da0c8" />
+<img width="338" alt="Image" src="https://github.com/user-attachments/assets/17fe3098-48da-4f81-b35a-bc7ae115feb2" />
 
-Optimization Areas Identified: While initial scores were strong, **Best Practices** and **SEO** had room for improvement:
+**Optimization Areas Identified**: While initial scores were strong, **Best Practices** and **SEO** had room for improvement:
 
 ### Optimization Efforts:
 
@@ -39,7 +74,7 @@ Optimization Areas Identified: While initial scores were strong, **Best Practice
 
 ### Post Optimization Scores
 
-<img width="323" alt="Image" src="https://github.com/user-attachments/assets/e5935ba2-4013-4928-81f6-559a94eb50ca" />
+<img width="323" alt="Image" src="https://github.com/user-attachments/assets/550f2bf0-e5fb-4739-9877-08e4e786e4ef" />
 
 Score Improvements Summary:
 
