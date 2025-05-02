@@ -58,9 +58,10 @@ Follow these steps to set up the project on your local machine:
 
 1. **Clone the repository:** Open your terminal and run: git clone https://github.com/kovymun/react-contact-us-section.git
 2. **Navigate into the project directory:** cd `<directory-name>`
-3. **Install dependencies:** npm install
-4. **Start the development server:** npm run dev
-5. The project should now be running locally at localhost:5173
+3. **Open the project in Visual Studio Code:** Once you're inside the project folder, open it in VS Code by running code .
+4. **Install dependencies:** npm install
+5. **Start the development server:** npm run dev
+6. The project should now be running locally at localhost:5173
 
 ### Usage Guide
 
