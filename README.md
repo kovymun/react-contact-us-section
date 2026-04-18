@@ -1,25 +1,67 @@
 ## Responsive Healthcare Contact & Appointment UI (React + TypeScript + Tailwind CSS)
 
-![React](https://img.shields.io/badge/React.js-61DAFB?style=for-the-badge&logo=react&logoColor=black) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white) ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+> This micro project serves as a ready-to-use template for building a responsive Contact & Appointment section on the React platform. Rather than being part of a larger application, it is intentionally scoped to a single component, allowing developers to study, reuse, and adapt it without the complexity of a full project setup. Built with React.js, TypeScript, and Tailwind CSS, it demonstrates core React concepts including component architecture, scoped styling, and performance conscious development in a focused and digestible way. It showcases **essential front-end development skills** commonly used in real-world applications, delivering a **clean**, **responsive**, and **interactive** user interface. The project mimics a real world user experience that could easily be part of a modern healthcare provider's website, offering both contact information and a seamless way for patients to request appointments online.
+
+---
 
 ### Table of Contents:
 
-- [Description and Purpose](#description-and-purpose)
-- [Disclaimer](#disclaimer)
-- [Key Features](#key-features)
+- [Preview](#preview)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Usage Guide](#usage-guide)
 - [Tools and Programming Languages Used](#tools-and-programming-languages-used)
-- [Installation Guide](#installation-guide)
-- [Usage Guide](#usage-guide)
+- [Key Features](#key-features)
 - [Performance](#performance)
+- [Disclaimer](#disclaimer)
+- [License](#license)
 - [Credits Section](#credits-section)
 
-### Description and Purpose
+---
 
-This is a small **front-end** project built using **React**, **TypeScript**, and **Tailwind CSS**, designed to simulate a functional **Contact Us section** for a fictional medical centre - **Riverside Medical Centre**. It showcases **essential front-end development skills** commonly used in real-world applications, delivering a **clean**, **responsive**, and **interactive** user interface. The project mimics a real world user experience that could easily be part of a modern healthcare provider's website, offering both contact information and a seamless way for patients to request appointments online.
+### Preview
 
-### Disclaimer
+---
 
-All names, addresses, locations, and contact details used in this project, such as _Riverside Medical Centre_ and the names of _medical practitioners_, are entirely fictional and intended solely for demonstration purposes to showcase how a healthcare contact section might appear. Any resemblance to real individuals, clinics, centres, or organizations is purely coincidental.
+### Getting Started
+
+#### Prerequisites
+
+- Node.js `v18+`
+- npm or pnpm
+
+#### Installation
+
+1. Clone the repo: `git clone https://github.com/kovymun/react-contact-us-section.git`
+2. Navigate into the project: `cd react-contact-section`
+3. Install dependencies: `npm install` OR `npm i`
+4. Start development server: `npm run dev`
+5. Build for Production: `npm run build`
+6. Preview Production Build: `npm run preview`
+
+#### Usage Guide
+
+Follow the steps below to interact with the application:
+
+1. **Start the application:** Follow the steps outlined in the Installation guide to run the project.
+2. **Explore the Contact Us Section:** This section provides contact details such as _opening hours_, _phone numbers_, _email address_, and _physical location_.
+3. **Request an Appointment:** If the user wishes to book an appointment.
+4. **Fill in the Appointment Form:** User can enter their appointment information. **Form validation** ensures that required fields are correctly filled out before submission.
+5. **Submit the Form:** After completing the form, the user can click the **Request Secure Appointment** button. A toast notification will confirm successful submission.
+6. **View Output:** For demo purposes, the submitted appointment details will be printed as a JavaScript object in the browser's console.
+
+---
+
+### Tools and Programming languages used
+
+![React](https://img.shields.io/badge/React.js-61DAFB?style=for-the-badge&logo=react&logoColor=black) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white) ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white) ![React Hook Form](https://img.shields.io/badge/React_Hook_Form-EC5990?style=for-the-badge&logo=reacthookform&logoColor=white) ![React Hot Toast](https://img.shields.io/badge/React_Hot_Toast-FF4154?style=for-the-badge&logo=react&logoColor=white)
+
+#### Other:
+
+- Code Editor / IDE: I would recommend using **Microsoft Visual Studio Code (VS Code)** as your preferred code editor / IDE to explore this project. If you do not have VS Code installed and require assistance with downloading and installation, please refer to this guide: https://code.visualstudio.com/docs/setup/setup-overview
+
+---
 
 ### Key features
 
@@ -31,52 +73,7 @@ All names, addresses, locations, and contact details used in this project, such 
 - Efficient event handling with delegation.
 - Real-time user feedback via toast notifications.
 
-### Tools and Programming languages used
-
-- React.js, TypeScript, and Vite (for scaffolding and development).
-- Tailwind CSS: Utility first CSS framework for rapid UI styling.
-- DaisyUI: A component library built on top of Tailwind CSS, used for the modal and UI enhancements.
-
-#### Additional Libraries:
-
-- **React Hook Form** - Handles form state and provides client-side validation for required fields and input formats.
-- **React Hot Toast** - Provides feedback to users via toast notifications after form submission (success or error messages).
-
-#### Other:
-
-- Code Editor / IDE: I would recommend using Microsoft Visual Studio code (VS Code) as your preferred code editor / IDE to explore this project. If you do not have VS Code installed and require assistance with downloading and installation, please refer to this guide: https://code.visualstudio.com/docs/setup/setup-overview
-
-### Installation Guide
-
-Follow these steps to set up the project on your local machine:
-
-#### Pre-requisites:
-
-- Node.js (v18 or later), which includes npm by default. **LINK**: https://nodejs.org/en
-
-#### Steps:
-
-1. **Clone the repository:** Open your terminal and run: git clone https://github.com/kovymun/react-contact-us-section.git
-2. **Navigate into the project directory:** cd `<directory-name>`
-3. **Open the project in Visual Studio Code:** Once you're inside the project folder, open it in VS Code by running `code .`
-4. **Install dependencies:** npm install
-5. **Start the development server:** npm run dev
-6. The project should now be running locally at localhost:5173
-
-### Usage Guide
-
-Follow the steps below to interact with the application:
-
-1. **Start the application:** Follow the steps outlined in the Installation guide to run the project on your local machine.
-2. **Explore the Contact Us Section:** Once the app loads, you'll be presented with a responsive **Contact Us** section for the fictional **Riverside Medical Centre**. This section provides contact details such as _opening hours_, _phone numbers_, _email address_, and _physical location_.
-3. **Request an Appointment:** If the user wishes to book an appointment, they can click the **Request Appointment** button.
-4. **Fill in the Appointment Form:** A modal will appear containing an **appointment booking form**, where the user can enter their _contact information_, _preferred appointment date and time_, the _medical practitioner_ they would like to see, and the _reason for the visit_. **Form validation** ensures that required fields are correctly filled out before submission.
-5. **Submit the Form:** After completing the form, the user can click the **Schedule Appointment** button. A toast notification will confirm successful submission.
-6. **View Output:** For demonstration purposes, the submitted appointment details will be printed as a JavaScript object in the browser's console.
-
-![Image](https://github.com/user-attachments/assets/4616723a-6ba5-4398-b9c0-afe767471cbc)
-
-![Image](https://github.com/user-attachments/assets/81e0f796-f09d-43d1-9b93-5dd3a5d47c7a)
+---
 
 ### Performance
 
@@ -129,6 +126,20 @@ Score Improvements Summary:
 | Accessibility  | 100%   | 100%  |
 | Best Practices | 96%    | 100%  |
 | SEO            | 90%    | 100%  |
+
+---
+
+### Disclaimer
+
+All names, addresses, locations, and contact details used in this project, such as _Riverside Medical Centre_ and the names of _medical practitioners_, are entirely fictional and intended solely for demonstration purposes to showcase how a healthcare contact section might appear. Any resemblance to real individuals, clinics, centres, or organizations is purely coincidental.
+
+---
+
+### License
+
+MIT: free to use, adapt, and build upon.
+
+---
 
 ### Credits Section:
 
