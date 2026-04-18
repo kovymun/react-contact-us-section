@@ -39,7 +39,16 @@ export interface MediCentreDB {
   practitioners: MediCentrePractitioners[];
 }
 
-type FooterSection = {
+export interface AppointmentFormInputs {
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  practitioner: string;
+  appointmentTime: string;
+}
+
+export type FooterSection = {
   title: string;
   links: string[];
 };
